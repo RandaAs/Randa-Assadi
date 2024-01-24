@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        /* Add some basic styling for better appearance */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0.2px;
+            background-color: #eaafea; /* Set a background color for the body */
+        }
+        input {
+            width: 250px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid #ccc; /* Add border to the calculator display */
+            margin-bottom: 10px; /* Add some margin for better separation */
+        }
+        button {
+            width: 40px; /* Adjust button width */
+            height: 30px;
+            font-size: 16px;
+            margin: 0.2px; /* Reduce margin between buttons */
+            cursor: pointer; /* Change cursor on hover for better user feedback */
+            border: 1px solid #150c0c; /* Add a border to each button */
+            /*border-radius: 5px; /* Add some border-radius for rounded corners */
+            background-color: #e8bdde; /* Set a background color for the buttons */
+            transition: background-color 0.3s ease; /* Add a smooth transition for background color */
+            padding-top: 5px;
+            
+            border-radius: 45px;
+        }
+        .button-container {
+            width: 300px;
+            margin: 20px auto;
+            border: 8px solid #080202; /* Add border to the button container */
+            border-radius: 5px; /* Add some border-radius for rounded corners */
+            padding: 1px; /* Add padding to the button container */
+            display: inline-block; /* Keep the container inline with the text */
+        }
+
+        button:hover {
+            background-color: #ddd; /* Change background color on hover */
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .operator {
+            background-color: #8f1283; /* Set a different background color for operator buttons */
+        }
+        .equals {
+            background-color: #4caf50; /* Set a different background color for equals button */
+            color: #fff; /* Set text color for better contrast */
+        }
+        .clear {
+            background-color: #e74c3c; /* Set a different background color for clear button */
+            color: #fff; /* Set text color for better contrast */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calculator</h2>
+
+    <div>
+        <input type="text" id="display" disabled>
+    </div>
+
+    <div class="button-container">
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button class="operator" onclick="appendToDisplay('+')">+</button>
+
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button class="operator" onclick="appendToDisplay('-')">-</button>
+
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button class="operator" onclick="appendToDisplay('*')">*</button>
+
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button class="equals" onclick="Equals()">=</button>
+        <button class="operator" onclick="appendToDisplay('/')">/</button>
+    </div>
+
+    <script>
+        // Functions to handle calculator operations
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function Equals() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
